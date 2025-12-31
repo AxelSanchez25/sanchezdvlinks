@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>SanchezDV — En Obras</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Tipografía Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #05070A;
+      --panel: #0B0F14;
+      --text: #E5E7EB;
+      --text-soft: #9CA3AF;
+      --accent: #0EA5E9;
+      --accent-soft: #38BDF8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 900px;
+      background: var(--panel);
+      padding: 48px 40px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.05);
+      box-shadow: 0 0 40px rgba(0,0,0,0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Cinta minimalista */
+    .tape {
+      position: absolute;
+      top: 18px;
+      left: -20%;
+      width: 140%;
+      height: 38px;
+      background: repeating-linear-gradient(
+        -45deg,
+        var(--accent) 0,
+        var(--accent) 12px,
+        #0B0F14 12px,
+        #0B0F14 24px
+      );
+      opacity: 0.12;
+      transform: rotate(-3deg);
+      pointer-events: none;
+    }
+
+    /* Logo tipográfico */
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: var(--accent);
+      margin-bottom: 32px;
+    }
+
+    .title {
+      font-size: clamp(2rem, 4vw, 2.6rem);
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+
+    .title span {
+      color: var(--accent);
+    }
+
+    .desc {
+      font-size: 1rem;
+      color: var(--text-soft);
+      max-width: 520px;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+
+    .pill {
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.82rem;
+      color: var(--text);
+      background: rgba(255,255,255,0.02);
+    }
+
+    /* Escena de grúa */
+    .workers {
+      position: relative;
+      margin-top: 8px;
+      border-radius: 14px;
+      background: radial-gradient(circle at top, rgba(15,23,42,0.9), #020617);
+      border: 1px solid rgba(255,255,255,0.05);
+      overflow: hidden;
+      height: 220px;
+      padding: 16px 20px 12px;
+    }
+
+    .workers-header {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-soft);
+      margin-bottom: 8px;
+      opacity: 0.8;
+    }
+
+    .workers-svg-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .ground-line {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 34px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(148,163,184,0.5), transparent);
+      opacity: 0.6;
+    }
+
+    .workers svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Animación de balanceo de la pluma de la grúa */
+    .crane-arm {
+      transform-origin: 160px 65px; /* punto de giro ~ base del mástil */
+      animation: craneSwing 4s ease-in-out infinite alternate;
+    }
+
+    .crane-hook {
+      animation: hookFloat 2.8s ease-in-out infinite alternate;
+      transform-origin: center top;
+    }
+
+    @keyframes craneSwing {
+      from { transform: rotate(-4deg); }
+      to   { transform: rotate(3deg); }
+    }
+
+    @keyframes hookFloat {
+      from { transform: translateY(0); }
+      to   { transform: translateY(6px); }
+    }
+
+    .status {
+      margin-top: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-soft);
+      font-size: 0.9rem;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 10px #22c55e;
+      animation: pulse 1.6s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      60% { transform: scale(1.6); opacity: 0; }
+      100% { transform: scale(1.6); opacity: 0; }
+    }
+
+    @media (max-width: 720px) {
+      .container {
+        padding: 32px 22px;
+      }
+    }
+
+    @media (max-width: 480px) {
+  .container {
+    padding: 28px 18px;
+  }
+
+  .logo {
+    font-size: 1.4rem;
+    margin-bottom: 24px;
+  }
+
+  .title {
+    font-size: 1.9rem;
+    line-height: 1.15;
+  }
+
+  .desc {
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+  }
+
+  .pill-row {
+    gap: 8px;
+  }
+
+  .pill {
+    font-size: 0.75rem;
+    padding: 5px 12px;
+  }
+
+  .workers {
+    height: 200px;
+    padding: 10px 12px;
+  }
+
+  .workers svg {
+    transform: scale(0.9);
+    transform-origin: center bottom;
+  }
+
+  .workers-header {
+    font-size: 0.7rem;
+  }
+}
+@media (min-width: 481px) and (max-width: 900px) {
+  .container {
+    padding: 40px 28px;
+  }
+
+  .title {
+    font-size: 2.2rem;
+  }
+
+  .desc {
+    font-size: 1rem;
+  }
+
+  .workers {
+    height: 240px;
+  }
+
+  .workers svg {
+    transform: scale(1.05);
+    transform-origin: center bottom;
+  }
+}
+@media (max-width: 480px) {
+  .workers svg {
+    transform: scale(1.1) translateY(10px);
+  }
+}
+
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="tape"></div>
+
+    <div class="logo">SanchezDV</div>
+
+    <h1 class="title">
+      Construyendo la nueva <span>experiencia</span> digital.
+    </h1>
+
+    <p class="desc">
+      Estoy rediseñando mi espacio web para alinearlo con mi visión, mi estilo y mi evolución como creador y desarrollador.  
+      Vuelve pronto para ver algo más sólido, más profesional y más mío.
+    </p>
+
+    <div class="pill-row">
+      <span class="pill">Frontend Developer</span>
+      <span class="pill">HTML · CSS · JavaScript</span>
+      <span class="pill">WordPress</span>
+      <span class="pill">Identidad Digital</span>
+    </div>
+
+    <!-- ESCENA CON GRÚA SVG -->
+    <div class="workers">
+      <div class="workers-header">Zona en obras</div>
+      <div class="workers-svg-wrapper">
+        <div class="ground-line"></div>
+
+        <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Suelo -->
+          <rect x="0" y="120" width="400" height="40" fill="#020617" />
+
+          <!-- Base de la grúa -->
+          <rect x="145" y="110" width="50" height="10" rx="2" fill="#020617" stroke="#111827" stroke-width="1" />
+          <rect x="160" y="70" width="20" height="40" rx="2" fill="#020617" stroke="#1F2937" stroke-width="1.2" />
+
+          <!-- Cabina -->
+          <rect x="150" y="60" width="40" height="18" rx="3" fill="#020617" stroke="#38BDF8" stroke-width="1.2" />
+          <rect x="154" y="63" width="18" height="12" rx="2" fill="#0B1120" />
+          <circle cx="178" cy="69" r="2.3" fill="#38BDF8" />
+
+          <!-- Torre / mástil -->
+          <g stroke="#0EA5E9" stroke-width="1.2" stroke-linecap="round">
+            <line x1="170" y1="70" x2="170" y2="32" />
+            <line x1="170" y1="70" x2="166" y2="32" />
+            <line x1="170" y1="70" x2="174" y2="32" />
+          </g>
+
+          <!-- Brazo de la grúa (grupo que se mueve) -->
+          <g class="crane-arm">
+            <!-- Viga principal -->
+            <line x1="170" y1="32" x2="290" y2="32" stroke="#0EA5E9" stroke-width="3" stroke-linecap="round" />
+            <!-- Refuerzos diagonales -->
+            <g stroke="#38BDF8" stroke-width="1">
+              <line x1="178" y1="32" x2="188" y2="24" />
+              <line x1="188" y1="32" x2="198" y2="24" />
+              <line x1="198" y1="32" x2="208" y2="24" />
+              <line x1="208" y1="32" x2="218" y2="24" />
+              <line x1="218" y1="32" x2="228" y2="24" />
+              <line x1="228" y1="32" x2="238" y2="24" />
+              <line x1="238" y1="32" x2="248" y2="24" />
+              <line x1="248" y1="32" x2="258" y2="24" />
+              <line x1="258" y1="32" x2="268" y2="24" />
+              <line x1="268" y1="32" x2="278" y2="24" />
+            </g>
+
+            <!-- Cable colgando -->
+            <line x1="285" y1="32" x2="285" y2="72" stroke="#38BDF8" stroke-width="1.5" />
+
+            <!-- Gancho + bloque -->
+            <g class="crane-hook">
+              <!-- Bloque -->
+              <rect x="278" y="72" width="14" height="10" rx="2" fill="#111827" stroke="#38BDF8" stroke-width="1"/>
+              <!-- Gancho -->
+              <path d="M285 82 q4 4 0 8 q-4 4 0 8" fill="none" stroke="#38BDF8" stroke-width="1.4" stroke-linecap="round"/>
+            </g>
+          </g>
+
+          <!-- Bloques "en construcción" -->
+          <rect x="70" y="104" width="32" height="16" rx="2" fill="#0B1120" stroke="#111827" stroke-width="1"/>
+          <rect x="92" y="96" width="32" height="24" rx="2" fill="#020617" stroke="#1F2937" stroke-width="1"/>
+          <rect x="310" y="104" width="30" height="16" rx="2" fill="#0B1120" stroke="#111827" stroke-width="1"/>
+
+          <!-- Luces suaves de ambiente -->
+          <ellipse cx="200" cy="120" rx="130" ry="26" fill="#020617" opacity="0.7"/>
+          <circle cx="200" cy="20" r="40" fill="#0EA5E9" opacity="0.12"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="status">
+      <div class="dot"></div>
+      <span>Obras activas en este momento…</span>
+    </div>
+
+  </div>
+</body>
+</html>
