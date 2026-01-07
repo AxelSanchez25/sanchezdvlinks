@@ -34,7 +34,7 @@ body {
   /* Morado vibrante */
   --soft-purple: #4c1d95;
   /* Morado profundo */
-  --dot-color: rgba(255, 255, 255, 0.1);
+  --dot-color: rgba(0, 0, 0, 0.1);
 }
 
 body {
@@ -42,16 +42,16 @@ body {
   /* Tipografía Apple */
   margin: 0;
   min-height: 100vh;
-  background-color: var(--bg-color);
+  background-color:white;
 
   /* Capas de gradiente: El secreto de Midu */
   background-image:
     /* 1. Tus puntos de iPad */
-    radial-gradient(circle, var(--dot-color) 2px, transparent 0),
+    radial-gradient(circle, var(--dot-color) 2px, transparent 0);
     /* 2. Mancha morada principal */
-    radial-gradient(at 0% 0%, rgba(109, 40, 217, 0.3) 0px, transparent 50%),
-    /* 3. Mancha morada secundaria en la otra esquina */
-    radial-gradient(at 100% 100%, rgba(76, 29, 149, 0.3) 0px, transparent 50%);
+/*     radial-gradient(at 0% 0%, rgba(109, 40, 217, 0.3) 0px, transparent 50%),
+ */    /* 3. Mancha morada secundaria en la otra esquina */
+    /* radial-gradient(at 100% 100%, rgba(76, 29, 149, 0.3) 0px, transparent 50%); */
 
   background-size: 25px 25px, 100% 100%, 100% 100%;
 
@@ -75,20 +75,22 @@ body {
 
 .alto {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   flex-direction: row;
   gap: 2em;
   margin-bottom: 3em;
 }
 
 .medio-contenido p {
-  color: rgba(255, 255, 255, 0.692);
+  color: rgba(0, 0, 0, 0.692);
   text-transform: capitalize;
   font-weight: bold;
+  width: 26em;
+  margin: 2em;
 }
 
 .medio-contenido strong {
-  color: white;
+  color: var(--accent-purple);
 }
 
 .redes {
@@ -100,7 +102,7 @@ body {
   color: white;
   text-transform: capitalize;
   border-radius: 20px;
-  padding: 10px;
+  padding: 10px 30px;
   background-color: var(--soft-purple);
   transition: all 0.5s;
 }
@@ -111,16 +113,17 @@ body {
 
 .redesbtn2 {
   text-decoration: none;
-  color: white;
+  color: rgb(0, 0, 0);
   text-transform: capitalize;
   border: 1px solid var(--soft-purple);
   border-radius: 20px;
-  padding: 10px;
+  padding: 10px 20px;
   transition: all 0.5s;
 }
 
 .redesbtn2:hover {
   background-color: var(--accent-purple);
+  color: white;
 }
 
 
@@ -133,11 +136,11 @@ body {
   /* 2. Ajustamos el tamaño: 
      Si el SVG mide 24px, el botón debe ser un poco más grande (ej. 45px) 
      o quitar el width/height fijo para que el padding lo dicte. */
-  width: 45px;
-  height: 45px;
+  width: 30px;
+  height: 30px;
 
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
   padding: 0;
   /* Al usar flex con width/height, el padding ya no es necesario para centrar */
   position: relative;
@@ -154,12 +157,14 @@ body {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   transition: all 0.4s cubic-bezier(0.15, 0, 0.15, 1);
   overflow: hidden;
+  margin-bottom: 2px;
+
 }
 
 .buttons svg {
-  width: 25px;
+  width: 20px;
   /* Un poco más pequeño que el botón para que respire */
-  height: 25px;
+  height: 20px;
   flex-shrink: 0;
   /* Evita que el SVG se deforme */
   display: block;
@@ -203,14 +208,14 @@ body {
 
 .nombre {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   flex-direction: row;
   gap: 5px;
   text-transform: capitalize;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-weight: 800;
   /* Apple usa fuentes gruesas para que el degradado luzca más */
-  font-size: 1.5rem;
+  font-size: 0.9rem;
   /* Ajusta el tamaño a tu gusto */
 
   /* 1. Definimos el degradado: Morado -> Rosa -> Naranja */
@@ -232,12 +237,18 @@ body {
 
   /* Un ligero suavizado para que se vea premium */
   letter-spacing: -0.01em;
+
 }
 
+.nombre h1 {
+  margin-block-end: 5px;
+}
+
+
 .verify-icon {
-  width: 32px;
+  width: 20px;
   /* Ajusta según el tamaño de tu fuente */
-  height: 32px;
+  height: 20px;
   flex-shrink: 0;
   /* Evita que el icono se aplaste si el texto es largo */
   filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.2));
@@ -248,28 +259,28 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 20em;
-  background-color: aliceblue;
+  height: 15em;
   border-radius: 20px 20px 20px 20px;
+  margin: none;
 }
 
 .video-wrapper {
   position: relative;
-  height: 100%;
-  width: 100%;
+  height: 90%;
+  width: 80%;
   cursor: pointer;
 }
 
 /* Añade esto para que el iframe sea "hijo obediente" */
 .video-wrapper iframe {
   width: 100%;
-  height: 100%;
+  height: 80%;
   border-radius: 20px;
   display: block;
 }
 
 .video-wrapper img {
-  height: 100%;
+  height: 90%;
   width: 100%;
   object-fit: cover;
   /* Mantiene la proporción de la miniatura sin deformar */
@@ -288,14 +299,13 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
   pointer-events: none;
   /* Para que el click pase a través del degradado */
 }
 
 .play-button {
   position: absolute;
-  top: 50%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
 
@@ -356,20 +366,24 @@ body {
 /* 📱 MÓVIL (Pantallas hasta 480px) */
 @media (max-width: 480px) {
   .cartas {
-    width: 95%;      /* Ocupa casi todo el ancho */
-    height: auto;    /* Que crezca según el contenido */
+    width: 95%;
+    /* Ocupa casi todo el ancho */
+    height: auto;
+    /* Que crezca según el contenido */
     padding: 20px 10px;
   }
 
   .alto {
-    flex-direction: column; /* Emoji arriba, nombre abajo */
+    flex-direction: column;
+    /* Emoji arriba, nombre abajo */
     gap: 1em;
     margin-bottom: 2em;
     text-align: center;
   }
 
   .nombre {
-    font-size: 1.8rem; /* Reducimos tamaño para que no se rompa */
+    font-size: 0.9rem;
+    /* Reducimos tamaño para que no se rompa */
     justify-content: center;
   }
 
@@ -379,16 +393,22 @@ body {
   }
 
   .emoji img {
-    height: 200px; /* Emoji más pequeño en móvil */
+    height: 200px;
+    /* Emoji más pequeño en móvil */
   }
 
   .videos {
-    height: 12em; /* Video menos alto para pantallas pequeñas */
+    height: 12em;
+    /* Video menos alto para pantallas pequeñas */
     width: 100%;
   }
 
+  .medio-contenido p{
+    width: 20em;
+  }
   .botones {
-    flex-wrap: wrap; /* Si los botones no caben, bajan a la siguiente línea */
+    flex-wrap: wrap;
+    /* Si los botones no caben, bajan a la siguiente línea */
     gap: 10px;
   }
 }
@@ -402,7 +422,7 @@ body {
   }
 
   .nombre {
-    font-size: 2.2rem;
+    font-size: 0.9rem;
   }
 
   .videos {
@@ -417,18 +437,22 @@ body {
 
 /* 💻 PC / DESKTOP (A partir de 1025px) */
 @media (min-width: 1025px) {
+
   /* Aquí tu código ya se ve bien, pero aseguramos estabilidad */
   .cartas {
-    width: 40em; /* Tu ancho original */
+    width: 40em;
+    /* Tu ancho original */
     max-width: 1200px;
   }
 
   .nombre {
-    font-size: 2.5rem; /* Un poco más grande para impactar */
+    font-size: 0.9rem;
+    /* Un poco más grande para impactar */
   }
 
   .videos {
     width: 100%;
-    max-width: 700px; /* Evita que el video se estire demasiado */
+    max-width: 700px;
+    /* Evita que el video se estire demasiado */
   }
 }
