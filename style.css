@@ -42,16 +42,17 @@ body {
   /* Tipografía Apple */
   margin: 0;
   min-height: 100vh;
-  background-color:white;
+  background-color: white;
 
   /* Capas de gradiente: El secreto de Midu */
   background-image:
     /* 1. Tus puntos de iPad */
     radial-gradient(circle, var(--dot-color) 2px, transparent 0);
-    /* 2. Mancha morada principal */
-/*     radial-gradient(at 0% 0%, rgba(109, 40, 217, 0.3) 0px, transparent 50%),
- */    /* 3. Mancha morada secundaria en la otra esquina */
-    /* radial-gradient(at 100% 100%, rgba(76, 29, 149, 0.3) 0px, transparent 50%); */
+  /* 2. Mancha morada principal */
+  /*     radial-gradient(at 0% 0%, rgba(109, 40, 217, 0.3) 0px, transparent 50%),
+ */
+  /* 3. Mancha morada secundaria en la otra esquina */
+  /* radial-gradient(at 100% 100%, rgba(76, 29, 149, 0.3) 0px, transparent 50%); */
 
   background-size: 25px 25px, 100% 100%, 100% 100%;
 
@@ -373,6 +374,7 @@ body {
     padding: 20px 10px;
   }
 
+
   .alto {
     flex-direction: column;
     /* Emoji arriba, nombre abajo */
@@ -381,15 +383,31 @@ body {
     text-align: center;
   }
 
+  .buttons {
+    width: 45px;
+    height: 45px;
+    margin-bottom: 2px;
+  }
+
+
+
   .nombre {
     font-size: 0.9rem;
     /* Reducimos tamaño para que no se rompa */
-    justify-content: center;
+  }
+
+  .nombre h1{
+    margin-left: 26px;
   }
 
   .verify-icon {
     width: 24px;
     height: 24px;
+    align-items: center;
+  }
+
+  .emoji{
+    justify-content: start;
   }
 
   .emoji img {
@@ -403,9 +421,10 @@ body {
     width: 100%;
   }
 
-  .medio-contenido p{
+  .medio-contenido p {
     width: 20em;
   }
+
   .botones {
     flex-wrap: wrap;
     /* Si los botones no caben, bajan a la siguiente línea */
