@@ -381,6 +381,15 @@ body {
     gap: 1em;
     margin-bottom: 2em;
     text-align: center;
+    justify-content: center;
+    
+  }
+
+  .nombre{
+    display: flex;
+    align-items:baseline;
+    justify-content: center;
+    margin-left: 14px;
   }
 
   .buttons {
@@ -389,16 +398,6 @@ body {
     margin-bottom: 2px;
   }
 
-
-
-  .nombre {
-    font-size: 0.9rem;
-    /* Reducimos tamaño para que no se rompa */
-  }
-
-  .nombre h1{
-    margin-left: 37px;
-  }
 
   .verify-icon {
     width: 24px;
